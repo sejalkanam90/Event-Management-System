@@ -29,54 +29,29 @@ public class CancelBookingServlet extends HttpServlet {
         }
         
         String bookingId = request.getParameter("bookingId");
-        System.out.println("=== CancelBookingServlet ===");
-        System.out.println("Booking ID: " + bookingId);
-        System.out.println("User ID: " + user.getUserId());
         
         try {
-            // Get booking details
+            // Get booking details before cancelling
             Booking booking = bookingDAO.getBookingById(bookingId);
             
-            if (booking == null) {
-                System.out.println("Booking not found: " + bookingId);
-                session.setAttribute("error", "Booking not found!");
+            if (booking == null || !booking.getUserId().equals(user.getUserId())) {
+                session.setAttribute("error", "Invalid booking!");
                 response.sendRedirect("viewBookings");
                 return;
             }
             
-            System.out.println("Booking found - Event ID: " + booking.getEventId());
-            System.out.println("Seats: " + booking.getSeats());
-            System.out.println("Current Status: " + booking.getStatus());
-            
-            // Check if booking belongs to current user
-            if (!booking.getUserId().equals(user.getUserId())) {
-                System.out.println("Unauthorized - Booking belongs to: " + booking.getUserId());
-                session.setAttribute("error", "You cannot cancel this booking!");
-                response.sendRedirect("viewBookings");
-                return;
-            }
-            
-            // Check if booking is already cancelled
-            if ("CANCELLED".equals(booking.getStatus())) {
-                System.out.println("Already cancelled");
-                session.setAttribute("error", "Booking is already cancelled!");
-                response.sendRedirect("viewBookings");
-                return;
-            }
-            
-            // Cancel booking
+            // Update booking status to CANCELLED
             boolean cancelled = bookingDAO.cancelBooking(bookingId);
-            System.out.println("Cancel booking result: " + cancelled);
             
             if (cancelled) {
-                // Return seats to event
-                boolean seatsUpdated = eventDAO.updateEventSeats(booking.getEventId(), booking.getSeats(), false);
-                System.out.println("Seats update result: " + seatsUpdated);
                 
-                System.out.println("Booking cancelled successfully: " + bookingId);
-                session.setAttribute("message", "Booking cancelled successfully!");
+                boolean seatsUpdated = eventDAO.updateEventSeats(booking.getEventId(), booking.getSeats(), false);
+                System.out.println("Seats returned: " + seatsUpdated);
+                System.out.println("Event ID: " + booking.getEventId());
+                System.out.println("Seats returned: " + booking.getSeats());
+                
+                session.setAttribute("message", "Booking cancelled successfully! Seats are now available.");
             } else {
-                System.out.println("Failed to cancel booking");
                 session.setAttribute("error", "Failed to cancel booking!");
             }
             
@@ -84,7 +59,6 @@ public class CancelBookingServlet extends HttpServlet {
             
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Database error: " + e.getMessage());
             session.setAttribute("error", "Database error: " + e.getMessage());
             response.sendRedirect("viewBookings");
         }
