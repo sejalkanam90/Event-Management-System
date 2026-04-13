@@ -83,7 +83,7 @@ markdown
 
 1. **Clone Repository**
 ```bash
-git clone https://github.com/yourusername/Event-Management-System.git
+git clone https://github.com/sejalkanam90/Event-Management-System.git
 Import in Eclipse
 
 File → Import → Existing Maven Projects
@@ -149,7 +149,7 @@ Sejal Kanam
 
 Email: sejalkanam7@gmail.com
 
-GitHub: @SejalKanam
+GitHub: https://github.com/SejalKanam90
 
 📄 License
 This project is for educational purposes only.
