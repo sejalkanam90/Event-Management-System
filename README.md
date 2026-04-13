@@ -139,9 +139,7 @@ bash
 EMAIL_APP_PASSWORD = your_gmail_app_password
 📱 Responsive Design
 ✅ Desktop
-
 ✅ Tablet
-
 ✅ Mobile
 
 👥 Author
@@ -149,12 +147,10 @@ Sejal Kanam
 
 Email: sejalkanam7@gmail.com
 
-GitHub: https://github.com/SejalKanam90
+GitHub:https://github.com/sejalkanam90
 
 📄 License
 This project is for educational purposes only.
-
-Made with ❤️ by Sejal Kanam
 
 © 2026 EventHub. All rights reserved.
 
