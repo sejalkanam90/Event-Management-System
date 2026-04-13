@@ -54,7 +54,7 @@ public class UserDAO {
     public boolean registerUser(User user) throws SQLException {
         // Check if email already exists
         if (getUserByEmail(user.getEmail()) != null) {
-            System.out.println("❌ Email already exists: " + user.getEmail());
+            System.out.println("Email already exists: " + user.getEmail());
             return false;
         }
         
@@ -75,7 +75,7 @@ public class UserDAO {
             ps.setString(6, user.getRole() != null ? user.getRole() : "USER");
             
             int result = ps.executeUpdate();
-            System.out.println("✅ User registered with ID: " + user.getUserId());
+            System.out.println("User registered with ID: " + user.getUserId());
             return result > 0;
         }
     }
@@ -178,9 +178,9 @@ public class UserDAO {
             
             int rows = ps.executeUpdate();
             if (rows > 0) {
-                System.out.println("✅ Password updated for user: " + userId);
+                System.out.println("Password updated for user: " + userId);
             } else {
-                System.out.println("❌ Failed to update password for user: " + userId);
+                System.out.println("Failed to update password for user: " + userId);
             }
             return rows > 0;
         }
@@ -197,7 +197,7 @@ public class UserDAO {
             
             ps.setString(1, userId);
             int rows = ps.executeUpdate();
-            System.out.println("✅ User deleted: " + userId);
+            System.out.println("User deleted: " + userId);
             return rows > 0;
         }
     }
@@ -269,13 +269,13 @@ public class UserDAO {
         try {
             user.setCreatedAt(rs.getTimestamp("created_at"));
         } catch (SQLException e) {
-            // Ignore
+            
         }
         
         try {
             user.setCreatedAt(rs.getTimestamp("updated_at"));
         } catch (SQLException e) {
-            // Ignore
+            
         }
         
         return user;

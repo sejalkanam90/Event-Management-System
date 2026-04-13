@@ -698,7 +698,7 @@
         </div>
         
         <div class="footer">
-            <p>&copy; 2025 EventHub - Your Event Management Partner | Making events memorable</p>
+            <p>&copy; 2026 EventHub - Your Event Management Partner | Making events memorable</p>
         </div>
     </div>
 </body>

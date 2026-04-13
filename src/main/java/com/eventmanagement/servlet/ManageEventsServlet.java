@@ -19,10 +19,10 @@ public class ManageEventsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        // ✅ FIX: Get session with create false ✅
+      
         HttpSession session = request.getSession(false);
         
-        // ✅ FIX: Check if session is null ✅
+       
         if (session == null) {
             System.out.println("Session is null - redirecting to login");
             response.sendRedirect("login.jsp");
@@ -31,14 +31,14 @@ public class ManageEventsServlet extends HttpServlet {
         
         User admin = (User) session.getAttribute("user");
         
-        // ✅ FIX: Check if user is null ✅
+        
         if (admin == null) {
             System.out.println("User not logged in - redirecting to login");
             response.sendRedirect("login.jsp");
             return;
         }
         
-        // ✅ FIX: Check if user is ADMIN ✅
+        
         if (!"ADMIN".equals(admin.getRole())) {
             System.out.println("User is not admin - redirecting to userDashboard");
             response.sendRedirect("userDashboard");

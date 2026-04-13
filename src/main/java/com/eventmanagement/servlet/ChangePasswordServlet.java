@@ -55,7 +55,7 @@ public class ChangePasswordServlet extends HttpServlet {
                 session.setAttribute("user", user);
                 request.setAttribute("message", "Password changed successfully!");
                 
-                // ✅ Role-based redirect ✅
+                
                 if ("ADMIN".equals(user.getRole())) {
                     response.sendRedirect("adminProfile.jsp");
                 } else {

@@ -15,11 +15,11 @@ public class SearchEventsServlet extends HttpServlet {
     
     private EventDAO eventDAO = new EventDAO();
     
-    // ✅ ADD THIS METHOD for POST requests ✅
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        // POST requests should be handled same as GET
+        
         doGet(request, response);
     }
     

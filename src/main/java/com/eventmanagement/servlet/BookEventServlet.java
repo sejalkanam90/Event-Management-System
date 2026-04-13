@@ -92,8 +92,8 @@ public class BookEventServlet extends HttpServlet {
                     // Set event name in booking object
                     booking.setEventName(event.getName());
                     
-                    System.out.println("✅ Booking created - ID: " + booking.getBookingId());
-                    System.out.println("✅ Event Name set: " + booking.getEventName());
+                    System.out.println("Booking created - ID: " + booking.getBookingId());
+                    System.out.println("Event Name set: " + booking.getEventName());
                     
                     // Send confirmation email
                     try {
@@ -107,9 +107,9 @@ public class BookEventServlet extends HttpServlet {
                             totalAmount,
                             booking.getBookingId()
                         );
-                        System.out.println("✅ Email sent successfully");
+                        System.out.println("Email sent successfully");
                     } catch (Exception e) {
-                        System.out.println("❌ Email failed: " + e.getMessage());
+                        System.out.println("Email failed: " + e.getMessage());
                     }
                     
                     // Set attributes for confirmation page

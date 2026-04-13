@@ -20,7 +20,7 @@ public class UserDashboardServlet extends HttpServlet {
         
         HttpSession session = request.getSession(false);
         
-        // ✅ FIX: Check if session is null ✅
+        
         if (session == null) {
             System.out.println("Session is null - redirecting to login");
             response.sendRedirect("login.jsp");
@@ -29,7 +29,7 @@ public class UserDashboardServlet extends HttpServlet {
         
         User user = (User) session.getAttribute("user");
         
-        // ✅ FIX: Check if user is null ✅
+     
         if (user == null) {
             System.out.println("User not logged in - redirecting to login");
             response.sendRedirect("login.jsp");

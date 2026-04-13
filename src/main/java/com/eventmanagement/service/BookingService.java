@@ -38,10 +38,10 @@ public class BookingService {
             if (bookingDAO.createBooking(booking)) {
                 // Update event seats in database
                 eventService.updateSeats(event.getEventId(), seats, true);
-                System.out.println("✅ Booking created: " + bookingId);
+                System.out.println("Booking created: " + bookingId);
                 return booking;
             } else {
-                System.out.println("❌ Failed to create booking!");
+                System.out.println("Failed to create booking!");
                 return null;
             }
         } catch (SQLException e) {
@@ -55,7 +55,7 @@ public class BookingService {
             if (bookingDAO.cancelBooking(booking.getBookingId())) {
                 // Update event seats (add back)
                 eventService.updateSeats(booking.getEventId(), booking.getSeats(), false);
-                System.out.println("✅ Booking cancelled: " + booking.getBookingId());
+                System.out.println("Booking cancelled: " + booking.getBookingId());
                 return true;
             }
         } catch (SQLException e) {

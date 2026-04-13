@@ -40,7 +40,7 @@ public class EditProfileServlet extends HttpServlet {
                 request.setAttribute("error", "Failed to update profile!");
             }
             
-            // ✅ Role-based redirect ✅
+            
             if ("ADMIN".equals(user.getRole())) {
                 response.sendRedirect("adminProfile.jsp");
             } else {

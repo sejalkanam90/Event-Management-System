@@ -21,19 +21,19 @@ public class OTPUtil {
     public static void storeOTP(String email, String otp) {
         otpMap.put(email, otp);
         otpExpiry.put(email, System.currentTimeMillis() + EXPIRY_TIME);
-        System.out.println("✅ OTP stored for: " + email + " -> " + otp);
+        System.out.println("OTP stored for: " + email + " -> " + otp);
     }
     
     // Validate OTP
     public static boolean validateOTP(String email, String otp) {
         if (!otpMap.containsKey(email)) {
-            System.out.println("❌ OTP not found for: " + email);
+            System.out.println("OTP not found for: " + email);
             return false;
         }
         
         Long expiry = otpExpiry.get(email);
         if (expiry == null || expiry < System.currentTimeMillis()) {
-            System.out.println("❌ OTP expired for: " + email);
+            System.out.println("OTP expired for: " + email);
             otpMap.remove(email);
             otpExpiry.remove(email);
             return false;
@@ -41,11 +41,11 @@ public class OTPUtil {
         
         String storedOTP = otpMap.get(email);
         if (storedOTP != null && storedOTP.equals(otp)) {
-            System.out.println("✅ OTP validated for: " + email);
+            System.out.println("OTP validated for: " + email);
             return true;
         }
         
-        System.out.println("❌ Invalid OTP for: " + email);
+        System.out.println("Invalid OTP for: " + email);
         return false;
     }
     
@@ -53,6 +53,6 @@ public class OTPUtil {
     public static void removeOTP(String email) {
         otpMap.remove(email);
         otpExpiry.remove(email);
-        System.out.println("🗑️ OTP removed for: " + email);
+        System.out.println("OTP removed for: " + email);
     }
 }

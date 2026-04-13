@@ -17,7 +17,7 @@ public class DeleteEventServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        // ✅ FIX: Get session with create false ✅
+        
         HttpSession session = request.getSession(false);
         
         if (session == null) {

@@ -9,8 +9,8 @@ public class Event {
 	private Date eventDate;
 	private int capacity;
 	private int bookedSeats;
-	private double pricePerSeat; // Add this field
-	private String description; // Optional
+	private double pricePerSeat; 
+	private String description; 
 
 	public Event() {
 	}
@@ -80,7 +80,7 @@ public class Event {
 
 	public void setPricePerSeat(double pricePerSeat) {
 		this.pricePerSeat = pricePerSeat;
-	} // Add this
+	} 
 
 	public String getDescription() {
 		return description;

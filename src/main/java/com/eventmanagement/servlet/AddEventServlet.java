@@ -29,7 +29,7 @@ public class AddEventServlet extends HttpServlet {
         request.getRequestDispatcher("addEvent.jsp").forward(request, response);
     }
     
-    // ✅ ADD THIS METHOD for POST requests ✅
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {

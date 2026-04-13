@@ -29,9 +29,9 @@ public class PaymentService {
         payment.setPaymentMethod(paymentMethod);
         
         if (success) {
-            System.out.println("✅ Payment successful! ID: " + paymentId);
+            System.out.println("Payment successful! ID: " + paymentId);
         } else {
-            System.out.println("❌ Payment failed!");
+            System.out.println("Payment failed!");
         }
         
         return payment;

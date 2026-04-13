@@ -113,7 +113,7 @@ public class EventDAO {
         return null;
     }
     
-    // ✅ UPDATE EVENT - ADD THIS METHOD ✅
+    // UPDATE EVENT
     public boolean updateEvent(Event event) throws SQLException {
         String sql = "UPDATE events SET name = ?, location = ?, event_date = ?, capacity = ?, price_per_seat = ? WHERE event_id = ?";
         

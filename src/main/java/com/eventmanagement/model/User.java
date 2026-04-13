@@ -16,7 +16,7 @@ public class User {
 		this.role = "USER";
 	}
 
-	// Constructor with basic fields
+	
 	public User(String userId, String name, String email, String mobile, String password) {
 		this.userId = userId;
 		this.name = name;

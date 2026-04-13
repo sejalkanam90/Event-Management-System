@@ -21,7 +21,7 @@ public class EmailService {
         System.out.println("📧 Sending booking confirmation to: " + toEmail);
         
         if (PASSWORD == null || PASSWORD.isEmpty()) {
-            System.out.println("❌ Email not configured! Would have sent to: " + toEmail);
+            System.out.println("Email not configured! Would have sent to: " + toEmail);
             printBookingEmailToConsole(toEmail, userName, eventName, location, date, seats, amount, bookingId);
             return;
         }
@@ -52,7 +52,7 @@ public class EmailService {
         System.out.println("🔢 OTP: " + otp);
         
         if (PASSWORD == null || PASSWORD.isEmpty()) {
-            System.out.println("❌ Email not configured! OTP: " + otp);
+            System.out.println("Email not configured! OTP: " + otp);
             printOTPEmailToConsole(toEmail, userName, otp);
             return true;
         }
@@ -77,7 +77,7 @@ public class EmailService {
         System.out.println("🔗 Reset Link: " + resetLink);
         
         if (PASSWORD == null || PASSWORD.isEmpty()) {
-            System.out.println("❌ Email not configured! Reset link: " + resetLink);
+            System.out.println("Email not configured! Reset link: " + resetLink);
             printResetEmailToConsole(toEmail, userName, resetLink);
             return;
         }
@@ -104,7 +104,7 @@ public class EmailService {
         System.out.println("📧 Sending payment confirmation to: " + toEmail);
         
         if (PASSWORD == null || PASSWORD.isEmpty()) {
-            System.out.println("❌ Email not configured! Would have sent to: " + toEmail);
+            System.out.println("Email not configured! Would have sent to: " + toEmail);
             return;
         }
         
@@ -132,11 +132,11 @@ public class EmailService {
         System.out.println("📧 Sending cancellation email to: " + toEmail);
         
         if (PASSWORD == null || PASSWORD.isEmpty()) {
-            System.out.println("❌ Email not configured! Would have sent to: " + toEmail);
+            System.out.println("Email not configured! Would have sent to: " + toEmail);
             return;
         }
         
-        String subject = "❌ Booking Cancelled - " + bookingId;
+        String subject = "Booking Cancelled - " + bookingId;
         
         String message = "Dear " + userName + ",\n\n" +
                         "Your booking has been cancelled successfully.\n\n" +
@@ -176,10 +176,10 @@ public class EmailService {
             msg.setText(body);
             
             Transport.send(msg);
-            System.out.println("✅ Email sent successfully to: " + to);
+            System.out.println("Email sent successfully to: " + to);
             
         } catch (Exception e) {
-            System.out.println("❌ Email failed to: " + to);
+            System.out.println("Email failed to: " + to);
             System.out.println("Error: " + e.getMessage());
         }
     }
@@ -207,11 +207,11 @@ public class EmailService {
             msg.setText(body);
             
             Transport.send(msg);
-            System.out.println("✅ Email sent successfully to: " + to);
+            System.out.println("Email sent successfully to: " + to);
             return true;
             
         } catch (Exception e) {
-            System.out.println("❌ Email failed to: " + to);
+            System.out.println("Email failed to: " + to);
             System.out.println("Error: " + e.getMessage());
             return false;
         }
@@ -260,8 +260,8 @@ public class EmailService {
         if (PASSWORD != null && !PASSWORD.isEmpty()) {
             System.out.println("Password length: " + PASSWORD.length() + " characters");
         } else {
-            System.out.println("⚠️ WARNING: EMAIL_APP_PASSWORD environment variable not set!");
-            System.out.println("   Email will not be sent, will print to console instead.");
+            System.out.println("WARNING: EMAIL_APP_PASSWORD environment variable not set!");
+            System.out.println("Email will not be sent, will print to console instead.");
         }
     }
 }
