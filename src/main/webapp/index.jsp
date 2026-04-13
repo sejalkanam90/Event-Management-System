@@ -47,21 +47,6 @@
             100% { transform: translate(50px, 50px); }
         }
 
-        .animated-bg::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(102,126,234,0.3) 0%, rgba(118,75,162,0.3) 100%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        /* Floating Shapes */
         .floating-shapes {
             position: fixed;
             top: 0;
@@ -99,18 +84,19 @@
             z-index: 1;
         }
 
-        /* Navigation */
+        /* Navigation - Glassmorphism */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 40px;
+            padding: 15px 35px;
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
-            border-radius: 60px;
+            border-radius: 50px;
             margin-bottom: 60px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             animation: slideDown 0.6s ease;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         @keyframes slideDown {
@@ -128,47 +114,55 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 26px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
             font-weight: 800;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .logo i {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 30px;
         }
 
         .nav-links {
             display: flex;
-            gap: 45px;
+            gap: 40px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: #1a202c;
             font-weight: 500;
             transition: all 0.3s;
             position: relative;
-            font-size: 16px;
+            font-size: 15px;
         }
 
-        .nav-links a::after {
+        .nav-links a::before {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -8px;
             left: 0;
             width: 0;
             height: 2px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             transition: width 0.3s;
+            border-radius: 2px;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::before {
             width: 100%;
         }
 
@@ -178,11 +172,11 @@
 
         .nav-buttons {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
 
         .btn-nav {
-            padding: 10px 28px;
+            padding: 10px 24px;
             border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
@@ -213,17 +207,18 @@
             box-shadow: 0 5px 15px rgba(102,126,234,0.4);
         }
 
-        /* Hero Section */
+        /* Hero Section - Modern */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: center;
-            margin-bottom: 100px;
+            margin-bottom: 80px;
             padding: 50px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 50px;
+            background: rgba(255,255,255,0.98);
+            border-radius: 40px;
             backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .hero-content {
@@ -242,19 +237,20 @@
         }
 
         .hero-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(102,126,234,0.1);
             border-radius: 40px;
-            color: white;
-            font-size: 14px;
+            color: #667eea;
+            font-size: 13px;
             font-weight: 500;
             margin-bottom: 20px;
-            animation: pulse 2s infinite;
         }
 
         .hero-content h1 {
-            font-size: 52px;
+            font-size: 54px;
             font-weight: 800;
             color: #1a202c;
             margin-bottom: 20px;
@@ -278,6 +274,7 @@
             display: flex;
             gap: 40px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
         .stat-item {
@@ -298,11 +295,12 @@
 
         .hero-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .btn-hero {
-            padding: 15px 35px;
+            padding: 14px 32px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -310,17 +308,18 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .btn-hero-primary {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            box-shadow: 0 4px 15px rgba(102,126,234,0.3);
         }
 
         .btn-hero-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102,126,234,0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102,126,234,0.4);
         }
 
         .btn-hero-secondary {
@@ -332,7 +331,7 @@
         .btn-hero-secondary:hover {
             background: #667eea;
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         /* Hero Image */
@@ -354,23 +353,21 @@
 
         .hero-img {
             width: 100%;
-            max-width: 550px;
+            max-width: 500px;
             border-radius: 30px;
-            box-shadow: 0 25px 45px rgba(0,0,0,0.25);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            border: 4px solid rgba(255,255,255,0.3);
         }
 
         .hero-img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            transform: scale(1.02);
         }
 
         /* Features Section */
         .features {
-            padding: 70px 50px;
+            padding: 80px 50px;
             background: white;
-            border-radius: 50px;
+            border-radius: 40px;
             margin-bottom: 60px;
         }
 
@@ -394,44 +391,47 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
+            gap: 30px;
         }
 
         .feature-card {
             text-align: center;
-            padding: 45px 35px;
+            padding: 40px 30px;
             background: #f8f9fa;
-            border-radius: 35px;
+            border-radius: 24px;
             transition: all 0.4s;
             cursor: pointer;
+            border: 1px solid #e9ecef;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             background: white;
+            border-color: #667eea;
         }
 
         .feature-icon {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-size: 38px;
+            font-size: 32px;
             color: white;
             transition: all 0.3s;
         }
 
         .feature-card:hover .feature-icon {
             transform: scale(1.1) rotate(5deg);
+            border-radius: 50%;
         }
 
         .feature-card h3 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #1a202c;
             margin-bottom: 15px;
@@ -440,43 +440,68 @@
         .feature-card p {
             color: #718096;
             line-height: 1.6;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         /* CTA Section */
         .cta-section {
-            padding: 70px 50px;
+            padding: 80px 50px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50px;
+            border-radius: 40px;
             text-align: center;
             margin-bottom: 60px;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: shimmer 20s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
         }
 
         .cta-section h2 {
             font-size: 42px;
             font-weight: 800;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section p {
             font-size: 18px;
             opacity: 0.9;
             margin-bottom: 35px;
+            position: relative;
+            z-index: 1;
         }
 
         .btn-cta {
-            padding: 16px 45px;
+            padding: 15px 40px;
             background: white;
             color: #667eea;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 16px;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             transition: all 0.3s;
+            position: relative;
+            z-index: 1;
         }
 
         .btn-cta:hover {
@@ -487,21 +512,21 @@
         /* Footer */
         .footer {
             background: #1a202c;
-            border-radius: 40px;
-            padding: 60px 50px 35px;
+            border-radius: 30px;
+            padding: 60px 50px 30px;
             color: white;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 45px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-section h3 {
-            font-size: 20px;
-            margin-bottom: 22px;
+            font-size: 18px;
+            margin-bottom: 20px;
             position: relative;
             display: inline-block;
         }
@@ -509,18 +534,18 @@
         .footer-section h3::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 0;
-            width: 45px;
-            height: 3px;
+            width: 35px;
+            height: 2px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 3px;
+            border-radius: 2px;
         }
 
         .footer-section p {
             color: #a0aec0;
             line-height: 1.7;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             font-size: 14px;
         }
 
@@ -529,7 +554,7 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .footer-section ul li a {
@@ -545,13 +570,13 @@
 
         .social-links {
             display: flex;
-            gap: 18px;
-            margin-top: 25px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .social-links a {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
@@ -560,7 +585,7 @@
             color: white;
             text-decoration: none;
             transition: all 0.3s;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .social-links a:hover {
@@ -570,10 +595,10 @@
 
         .footer-bottom {
             text-align: center;
-            padding-top: 35px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #718096;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         /* Responsive */
@@ -582,7 +607,6 @@
                 grid-template-columns: 1fr;
                 text-align: center;
                 padding: 35px;
-                gap: 35px;
             }
             .hero-stats {
                 justify-content: center;
@@ -592,15 +616,17 @@
             }
             .navbar {
                 flex-direction: column;
-                gap: 20px;
-                padding: 18px 25px;
-                border-radius: 40px;
+                gap: 15px;
+                padding: 20px;
+            }
+            .nav-links {
+                gap: 25px;
             }
             .hero-content h1 {
                 font-size: 36px;
             }
             .hero-img {
-                max-width: 380px;
+                max-width: 350px;
             }
             .section-title h2 {
                 font-size: 32px;
@@ -631,14 +657,11 @@
             .hero-content h1 {
                 font-size: 28px;
             }
-            .hero-img {
-                max-width: 280px;
-            }
             .features {
                 padding: 40px 25px;
             }
             .cta-section {
-                padding: 40px 25px;
+                padding: 50px 25px;
             }
             .footer {
                 padding: 40px 25px 25px;
@@ -660,8 +683,10 @@
         <!-- Navigation -->
         <nav class="navbar">
             <div class="logo">
-                <i class="fas fa-calendar-alt"></i>
-                <span>EventHub</span>
+                <div class="logo-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <span class="logo-text">EventHub</span>
             </div>
             <div class="nav-links">
                 <a href="#home">Home</a>
@@ -682,10 +707,11 @@
         <section class="hero" id="home">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <i class="fas fa-rocket"></i> Welcome to EventHub
+                    <i class="fas fa-rocket"></i>
+                    Welcome to EventHub
                 </div>
                 <h1>
-                    Your Ultimate <span class="gradient-text">Event Management</span> Platform
+                    Your Ultimate <span class="gradient-text">Event Management</span><br>Platform
                 </h1>
                 <p>
                     Discover, book, and manage events seamlessly. From concerts to conferences,
@@ -714,10 +740,8 @@
                     </a>
                 </div>
             </div>
-            
-            <!-- Event Management Image -->
             <div class="hero-image">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKcjTxtV2-w0HzQDKJY1SIBE2oZ0Jq0GwOpQ&s" 
+                <img src="https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600" 
                      alt="Event Management" 
                      class="hero-img">
             </div>
@@ -767,6 +791,7 @@
             <p>Join thousands of happy users who trust EventHub for their event needs</p>
             <a href="register.jsp" class="btn-cta">
                 <i class="fas fa-rocket"></i> Get Started Now
+                <i class="fas fa-arrow-right"></i>
             </a>
         </section>
 
@@ -812,7 +837,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 EventHub. All rights reserved. | Professional Event Management System</p>
+                <p>&copy; 2026 EventHub. All rights reserved. | Event Management System</p>
             </div>
         </footer>
     </div>
