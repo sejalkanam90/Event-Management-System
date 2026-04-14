@@ -8,12 +8,18 @@
     }
     List<Event> events = (List<Event>) request.getAttribute("events");
     
-    // Get booking count for this user
+   
     BookingDAO bookingDAO = new BookingDAO();
     int bookingCount = 0;
     try {
         List<com.eventmanagement.model.Booking> bookings = bookingDAO.getBookingsByUserId(user.getUserId());
-        bookingCount = bookings != null ? bookings.size() : 0;
+        if(bookings != null) {
+            for(com.eventmanagement.model.Booking b : bookings) {
+                if("CONFIRMED".equals(b.getStatus())) {
+                    bookingCount++;
+                }
+            }
+        }
     } catch(Exception e) {
         bookingCount = 0;
     }

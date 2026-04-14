@@ -29,9 +29,11 @@ public class CancelBookingServlet extends HttpServlet {
         }
         
         String bookingId = request.getParameter("bookingId");
+        System.out.println("=== CancelBookingServlet ===");
+        System.out.println("Booking ID: " + bookingId);
         
         try {
-            // Get booking details before cancelling
+            // Get booking details
             Booking booking = bookingDAO.getBookingById(bookingId);
             
             if (booking == null || !booking.getUserId().equals(user.getUserId())) {
@@ -40,17 +42,25 @@ public class CancelBookingServlet extends HttpServlet {
                 return;
             }
             
+            System.out.println("Event ID: " + booking.getEventId());
+            System.out.println("Seats: " + booking.getSeats());
+            System.out.println("Current Status: " + booking.getStatus());
+            
             // Update booking status to CANCELLED
             boolean cancelled = bookingDAO.cancelBooking(bookingId);
+            System.out.println("Cancel result: " + cancelled);
             
             if (cancelled) {
-                
+                // Return seats to event
+                System.out.println("=== Updating seats ===");
                 boolean seatsUpdated = eventDAO.updateEventSeats(booking.getEventId(), booking.getSeats(), false);
-                System.out.println("Seats returned: " + seatsUpdated);
-                System.out.println("Event ID: " + booking.getEventId());
-                System.out.println("Seats returned: " + booking.getSeats());
+                System.out.println("Seats updated result: " + seatsUpdated);
                 
-                session.setAttribute("message", "Booking cancelled successfully! Seats are now available.");
+                if (seatsUpdated) {
+                    session.setAttribute("message", "Booking cancelled successfully! " + booking.getSeats() + " seats are now available.");
+                } else {
+                    session.setAttribute("warning", "Booking cancelled but seats may not be updated.");
+                }
             } else {
                 session.setAttribute("error", "Failed to cancel booking!");
             }
