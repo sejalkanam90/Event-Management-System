@@ -11,14 +11,17 @@
     int totalBookings = 0;
     int confirmedCount = 0;
     int cancelledCount = 0;
-    double totalRevenue = 0;
+    double totalRevenue = 0;  
     
     if(bookings != null && !bookings.isEmpty()) {
         totalBookings = bookings.size();
         for(Booking b : bookings) {
-            totalRevenue += b.getTotalAmount();
-            if("CONFIRMED".equals(b.getStatus())) confirmedCount++;
-            else if("CANCELLED".equals(b.getStatus())) cancelledCount++;
+            if("CONFIRMED".equals(b.getStatus())) {
+                confirmedCount++;
+                totalRevenue += b.getTotalAmount();  
+            } else if("CANCELLED".equals(b.getStatus())) {
+                cancelledCount++;
+            }
         }
     }
 %>
@@ -99,7 +102,6 @@
             border-radius: 8px;
             font-size: 14px;
         }
-        .search-box input:focus { outline: none; border-color: #2a5298; }
         .table-container { padding: 20px 30px; overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; min-width: 800px; }
         th {
@@ -146,11 +148,12 @@
             <a href="adminDashboard" class="btn-secondary"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
         </div>
 
+        <!-- Statistics Cards - फक्त confirmed bookings चा revenue -->
         <div class="stats-container">
             <div class="stat-card"><div class="stat-value"><%= totalBookings %></div><div class="stat-label">Total Bookings</div></div>
             <div class="stat-card"><div class="stat-value"><%= confirmedCount %></div><div class="stat-label">Confirmed</div></div>
             <div class="stat-card"><div class="stat-value"><%= cancelledCount %></div><div class="stat-label">Cancelled</div></div>
-            <div class="stat-card"><div class="stat-value">₹<%= String.format("%,.0f", totalRevenue) %></div><div class="stat-label">Revenue</div></div>
+            <div class="stat-card"><div class="stat-value">₹<%= String.format("%,.0f", totalRevenue) %></div><div class="stat-label">Revenue (Confirmed)</div></div>
         </div>
 
         <div class="search-bar">
@@ -185,7 +188,7 @@
         </div>
 
         <div class="footer">
-            <p>&copy; 2026 EventHub - Admin Panel | Total Revenue: ₹<%= String.format("%,.0f", totalRevenue) %></p>
+            <p>&copy; 2026 EventHub - Admin Panel | Total Revenue (Confirmed): ₹<%= String.format("%,.0f", totalRevenue) %></p>
         </div>
     </div>
 

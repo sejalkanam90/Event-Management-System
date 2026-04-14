@@ -8,22 +8,22 @@
     }
     List<Booking> bookings = (List<Booking>) request.getAttribute("bookings");
     
-    // Calculate statistics
+   
     int totalBookings = 0;
     int totalSeats = 0;
     double totalSpent = 0;
-    int confirmedCount = 0;
-    int cancelledCount = 0;
+    int activeBookings = 0;
+    int cancelledBookings = 0;
     
     if(bookings != null && !bookings.isEmpty()) {
         totalBookings = bookings.size();
         for(Booking b : bookings) {
             totalSeats += b.getSeats();
-            totalSpent += b.getTotalAmount();
             if("CONFIRMED".equals(b.getStatus())) {
-                confirmedCount++;
+                activeBookings++;
+                totalSpent += b.getTotalAmount(); 
             } else if("CANCELLED".equals(b.getStatus())) {
-                cancelledCount++;
+                cancelledBookings++;
             }
         }
     }
@@ -366,10 +366,6 @@
             opacity: 0.5;
         }
 
-        .no-bookings p {
-            margin-bottom: 20px;
-        }
-
         /* Footer */
         .footer {
             text-align: center;
@@ -403,12 +399,6 @@
                 font-size: 10px;
             }
         }
-
-        @media (max-width: 768px) {
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
@@ -435,7 +425,7 @@
             </div>
         </div>
 
-        <!-- Statistics Cards -->
+        <!-- Statistics Cards - फक्त confirmed bookings -->
         <div class="stats-container">
             <div class="stat-card">
                 <div class="stat-icon">
@@ -462,7 +452,7 @@
                 <div class="stat-icon">
                     <i class="fas fa-check-circle"></i>
                 </div>
-                <div class="stat-value"><%= confirmedCount %></div>
+                <div class="stat-value"><%= activeBookings %></div>
                 <div class="stat-label">Active Bookings</div>
             </div>
         </div>

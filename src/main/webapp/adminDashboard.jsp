@@ -14,30 +14,33 @@
     int totalEvents = eventDAO.getAllEvents().size();
     int totalUsers = userDAO.getAllUsers().size();
     List<com.eventmanagement.model.Booking> bookings = bookingDAO.getAllBookings();
-    int totalBookings = bookings != null ? bookings.size() : 0;
-    double totalRevenue = 0;
-    int confirmedBookings = 0;
-    int cancelledBookings = 0;
     
-    if (bookings != null) {
-        for (com.eventmanagement.model.Booking b : bookings) {
-            totalRevenue += b.getTotalAmount();
-            if ("CONFIRMED".equals(b.getStatus())) confirmedBookings++;
-            else if ("CANCELLED".equals(b.getStatus())) cancelledBookings++;
+    
+    int confirmedBookings = 0;
+    double totalRevenue = 0;
+    if(bookings != null) {
+        for(com.eventmanagement.model.Booking b : bookings) {
+            if("CONFIRMED".equals(b.getStatus())) {
+                confirmedBookings++;
+                totalRevenue += b.getTotalAmount();
+            }
         }
     }
     
-    double occupancyRate = 0;
+    int totalBookings = bookings != null ? bookings.size() : 0;
+    int cancelledBookings = totalBookings - confirmedBookings;
+    
+    // Calculate occupancy rate
     int totalCapacity = 0;
     int totalBookedSeats = 0;
     List<com.eventmanagement.model.Event> events = eventDAO.getAllEvents();
-    if (events != null) {
-        for (com.eventmanagement.model.Event e : events) {
+    if(events != null) {
+        for(com.eventmanagement.model.Event e : events) {
             totalCapacity += e.getCapacity();
             totalBookedSeats += e.getBookedSeats();
         }
     }
-    occupancyRate = totalCapacity > 0 ? (totalBookedSeats * 100.0 / totalCapacity) : 0;
+    double occupancyRate = totalCapacity > 0 ? (totalBookedSeats * 100.0 / totalCapacity) : 0;
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -264,7 +267,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 4px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             transform: scaleX(0);
             transition: transform 0.3s;
@@ -280,7 +283,7 @@
         }
 
         .stat-info h3 {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 800;
             margin-bottom: 5px;
         }
@@ -334,7 +337,7 @@
         }
 
         .quick-stat-value {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 800;
             color: #2a5298;
         }
@@ -371,7 +374,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 4px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             transform: scaleX(0);
             transition: transform 0.3s;
@@ -432,6 +435,17 @@
         .menu-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #718096;
+            font-size: 12px;
+            border-top: 1px solid #e9ecef;
+            border-radius: 16px;
         }
 
         /* Responsive */
@@ -495,10 +509,10 @@
             </div>
             <div class="stat-card bookings">
                 <div class="stat-info">
-                    <h3><%= totalBookings %></h3>
-                    <p>Total Bookings</p>
+                    <h3><%= confirmedBookings %></h3>
+                    <p>Confirmed Bookings</p>
                 </div>
-                <div class="stat-icon"><i class="fas fa-ticket-alt"></i></div>
+                <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
             </div>
             <div class="stat-card revenue">
                 <div class="stat-info">
@@ -568,6 +582,10 @@
                 <p>Update your admin profile information</p>
                 <a href="adminProfile.jsp" class="menu-btn">View Profile →</a>
             </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2026 EventHub - Admin Panel | Total Revenue: ₹<%= String.format("%,.0f", totalRevenue) %> | Confirmed Bookings: <%= confirmedBookings %></p>
         </div>
     </div>
 </body>
