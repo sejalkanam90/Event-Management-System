@@ -142,6 +142,23 @@ EMAIL_APP_PASSWORD = your_gmail_app_password
 ✅ Tablet
 ✅ Mobile
 
+## 📸 Screenshots
+
+![Login](https://raw.githubusercontent.com/sejalkanam90/Event-Management-System/master/src/main/webapp/screenshots/login.png)
+
+![Register](https://raw.githubusercontent.com/sejalkanam90/Event-Management-System/master/src/main/webapp/screenshots/register.png)
+
+![User Dashboard](https://raw.githubusercontent.com/sejalkanam90/Event-Management-System/master/src/main/webapp/screenshots/user-dashboard.png)
+
+![My Bookings](https://raw.githubusercontent.com/sejalkanam90/Event-Management-System/master/src/main/webapp/screenshots/my-booking.png)
+
+![View Events](https://raw.githubusercontent.com/sejalkanam90/Event-Management-System/master/src/main/webapp/screenshots/view-events.png)
+
+![Booking Confirmation](https://raw.githubusercontent.com/sejalkanam90/Event-Management-System/master/src/main/webapp/screenshots/booking-confirmation.png)
+
+![Admin Dashboard](https://raw.githubusercontent.com/sejalkanam90/Event-Management-System/master/src/main/webapp/screenshots/admin-dashboard.png)
+
+
 👥 Author
 Sejal Kanam
 
