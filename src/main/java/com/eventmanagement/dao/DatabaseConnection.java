@@ -5,8 +5,8 @@ import java.sql.*;
 public class DatabaseConnection {
 
     private static final String URL = "jdbc:mysql://localhost:3306/event_management_system";
-    private static final String USER = "root";
-    private static final String PASS = "Sejal@28";
+    private static final String USER = "your_username";
+    private static final String PASS = "your_password";
 
     static {
         try {
